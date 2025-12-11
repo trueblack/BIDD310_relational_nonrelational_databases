@@ -1,0 +1,300 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/localhost;DWStudentEnrollments",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "localhost",
+            "database": "DWStudentEnrollments"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "vDimClassesForTabular",
+        "columns": [
+          {
+            "name": "ClassKey",
+            "dataType": "int64",
+            "sourceColumn": "ClassKey"
+          },
+          {
+            "name": "ClassId",
+            "dataType": "int64",
+            "sourceColumn": "ClassId"
+          },
+          {
+            "name": "ClassName",
+            "dataType": "string",
+            "sourceColumn": "ClassName"
+          },
+          {
+            "name": "CurrentClassPrice",
+            "dataType": "double",
+            "sourceColumn": "CurrentClassPrice"
+          },
+          {
+            "name": "MaxCourseEnrollment",
+            "dataType": "int64",
+            "sourceColumn": "MaxCourseEnrollment"
+          },
+          {
+            "name": "ClassroomId",
+            "dataType": "int64",
+            "sourceColumn": "ClassroomId"
+          },
+          {
+            "name": "ClassroomName",
+            "dataType": "string",
+            "sourceColumn": "ClassroomName"
+          },
+          {
+            "name": "MaxClassroomSize",
+            "dataType": "int64",
+            "sourceColumn": "MaxClassroomSize"
+          },
+          {
+            "name": "DepartmentId",
+            "dataType": "int64",
+            "sourceColumn": "DepartmentId"
+          },
+          {
+            "name": "DepartmentName",
+            "dataType": "string",
+            "sourceColumn": "DepartmentName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWStudentEnrollments\",",
+                "    dbo_vDimClassesForTabular = Source{[Schema=\"dbo\",Item=\"vDimClassesForTabular\"]}[Data]",
+                "in",
+                "    dbo_vDimClassesForTabular"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vDimDatesForTabular",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "string",
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "FullDate",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "FullDate"
+          },
+          {
+            "name": "USADateName",
+            "dataType": "string",
+            "sourceColumn": "USADateName"
+          },
+          {
+            "name": "MonthKey",
+            "dataType": "int64",
+            "sourceColumn": "MonthKey"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName"
+          },
+          {
+            "name": "QuarterKey",
+            "dataType": "int64",
+            "sourceColumn": "QuarterKey"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName"
+          },
+          {
+            "name": "YearKey",
+            "dataType": "int64",
+            "sourceColumn": "YearKey"
+          },
+          {
+            "name": "YearName",
+            "dataType": "string",
+            "sourceColumn": "YearName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWStudentEnrollments\",",
+                "    dbo_vDimDatesForTabular = Source{[Schema=\"dbo\",Item=\"vDimDatesForTabular\"]}[Data]",
+                "in",
+                "    dbo_vDimDatesForTabular"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vDimStudentsForTabular",
+        "columns": [
+          {
+            "name": "StudentKey",
+            "dataType": "int64",
+            "sourceColumn": "StudentKey"
+          },
+          {
+            "name": "StudentId",
+            "dataType": "int64",
+            "sourceColumn": "StudentId"
+          },
+          {
+            "name": "StudentName",
+            "dataType": "string",
+            "sourceColumn": "StudentName"
+          },
+          {
+            "name": "StudentEmail",
+            "dataType": "string",
+            "sourceColumn": "StudentEmail"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWStudentEnrollments\",",
+                "    dbo_vDimStudentsForTabular = Source{[Schema=\"dbo\",Item=\"vDimStudentsForTabular\"]}[Data]",
+                "in",
+                "    dbo_vDimStudentsForTabular"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "vFactEnrollmentsForTabular",
+        "columns": [
+          {
+            "name": "EnrollmentId",
+            "dataType": "int64",
+            "sourceColumn": "EnrollmentId"
+          },
+          {
+            "name": "EnrollmentDate",
+            "dataType": "string",
+            "sourceColumn": "EnrollmentDate"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "string",
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "StudentKey",
+            "dataType": "int64",
+            "sourceColumn": "StudentKey"
+          },
+          {
+            "name": "ClassKey",
+            "dataType": "int64",
+            "sourceColumn": "ClassKey"
+          },
+          {
+            "name": "EnrollmentPrice",
+            "dataType": "double",
+            "sourceColumn": "EnrollmentPrice"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWStudentEnrollments\",",
+                "    dbo_vFactEnrollmentsForTabular = Source{[Schema=\"dbo\",Item=\"vFactEnrollmentsForTabular\"]}[Data]",
+                "in",
+                "    dbo_vFactEnrollmentsForTabular"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "EnrollmentDollars(SUM)",
+            "expression": "SUM([EnrollmentPrice])"
+          },
+          {
+            "name": "EnrollmentCounts(COUNTA)",
+            "expression": "COUNTA([EnrollmentId])"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "28f5e239-ae6d-4e01-ac99-04e11c354bf0",
+        "fromTable": "vFactEnrollmentsForTabular",
+        "fromColumn": "DateKey",
+        "toTable": "vDimDatesForTabular",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "038f1b78-02c1-49c4-aed4-2601f02b0ba2",
+        "fromTable": "vFactEnrollmentsForTabular",
+        "fromColumn": "ClassKey",
+        "toTable": "vDimClassesForTabular",
+        "toColumn": "ClassKey"
+      },
+      {
+        "name": "b6bc15d4-e90d-47a5-9373-00c09be51149",
+        "fromTable": "vFactEnrollmentsForTabular",
+        "fromColumn": "StudentKey",
+        "toTable": "vDimStudentsForTabular",
+        "toColumn": "StudentKey"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

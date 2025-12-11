@@ -1,0 +1,380 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/localhost;DWNorthwindLite",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "localhost",
+            "database": "DWNorthwindLite"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Customers",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CustomerName",
+            "dataType": "string",
+            "sourceColumn": "CustomerName"
+          },
+          {
+            "name": "CustomerCity",
+            "dataType": "string",
+            "sourceColumn": "CustomerCity"
+          },
+          {
+            "name": "CustomerCountry",
+            "dataType": "string",
+            "sourceColumn": "CustomerCountry"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWNorthwindLite\",",
+                "    dbo_vDimCustomersForTabularModel = Source{[Schema=\"dbo\",Item=\"vDimCustomersForTabularModel\"]}[Data]",
+                "in",
+                "    dbo_vDimCustomersForTabularModel"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "CustomersByLocation",
+            "levels": [
+              {
+                "name": "Country",
+                "ordinal": 0,
+                "column": "CustomerCountry"
+              },
+              {
+                "name": "City",
+                "ordinal": 1,
+                "column": "CustomerCity"
+              },
+              {
+                "name": "Name",
+                "ordinal": 2,
+                "column": "CustomerName"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "OrderDates",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "isKey": true,
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "WeekdayAndDate",
+            "dataType": "string",
+            "sourceColumn": "WeekdayAndDate"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter"
+          },
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWNorthwindLite\",",
+                "    dbo_vDimDatesForTabularModel = Source{[Schema=\"dbo\",Item=\"vDimDatesForTabularModel\"]}[Data]",
+                "in",
+                "    dbo_vDimDatesForTabularModel"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Year-Qtr-Month-Date",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter"
+              },
+              {
+                "name": "Date",
+                "ordinal": 3,
+                "column": "DateKey"
+              },
+              {
+                "name": "Month",
+                "ordinal": 2,
+                "column": "Month"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Products",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "ProductCategoryID",
+            "dataType": "int64",
+            "sourceColumn": "ProductCategoryID"
+          },
+          {
+            "name": "ProductCategoryName",
+            "dataType": "string",
+            "sourceColumn": "ProductCategoryName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWNorthwindLite\",",
+                "    dbo_vDimProductsForTabularModel = Source{[Schema=\"dbo\",Item=\"vDimProductsForTabularModel\"]}[Data]",
+                "in",
+                "    dbo_vDimProductsForTabularModel"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "ProductsByCategories",
+            "levels": [
+              {
+                "name": "Category",
+                "ordinal": 0,
+                "column": "ProductCategoryName"
+              },
+              {
+                "name": "Product",
+                "ordinal": 1,
+                "column": "ProductName"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Orders",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "sourceColumn": "OrderID"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "OrderDateKey",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "OrderDateKey"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "ActualOrderUnitPrice",
+            "dataType": "decimal",
+            "sourceColumn": "ActualOrderUnitPrice"
+          },
+          {
+            "name": "ActualOrderQuantity",
+            "dataType": "int64",
+            "sourceColumn": "ActualOrderQuantity"
+          },
+          {
+            "name": "DerivedExtendedOrderPrice",
+            "dataType": "decimal",
+            "sourceColumn": "DerivedExtendedOrderPrice"
+          },
+          {
+            "type": "calculated",
+            "name": "CalculatedExtendedOrderPrices",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "([ActualOrderUnitPrice]*[ActualOrderQuantity])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;DWNorthwindLite\",",
+                "    dbo_vFactOrdersForTabularModel = Source{[Schema=\"dbo\",Item=\"vFactOrdersForTabularModel\"]}[Data]",
+                "in",
+                "    dbo_vFactOrdersForTabularModel"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sum of ActualOrderUnitPrice",
+            "expression": "SUM([ActualOrderUnitPrice])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum of ActualOrderQuantity",
+            "expression": "SUM([ActualOrderQuantity])"
+          },
+          {
+            "name": "Sum of DerivedExtendedOrderPrice",
+            "expression": "SUM([DerivedExtendedOrderPrice])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum of CalculatedExtendedOrderPrices",
+            "expression": "SUM([CalculatedExtendedOrderPrices])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "09727cf8-16ba-4819-bf51-c8d2658f9ee3",
+        "fromTable": "Orders",
+        "fromColumn": "CustomerKey",
+        "toTable": "Customers",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "f928c323-d657-4ced-9814-987a7282cee9",
+        "fromTable": "Orders",
+        "fromColumn": "OrderDateKey",
+        "toTable": "OrderDates",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "c283efd7-ecc1-467f-9d28-4e83d91b19a0",
+        "fromTable": "Orders",
+        "fromColumn": "ProductKey",
+        "toTable": "Products",
+        "toColumn": "ProductKey"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

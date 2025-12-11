@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34114.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{7B92D58F-6D44-4CDE-BF3A-355474C67F5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{0FF7C226-0998-40D4-A5B9-1747E1CBE969}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\Assignment01DB_YourNameHere.sql = Scripts\Assignment01DB_YourNameHere.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90A5230E-6D28-4BCF-B5F8-18328FBE2D8C}
+	EndGlobalSection
+EndGlobal

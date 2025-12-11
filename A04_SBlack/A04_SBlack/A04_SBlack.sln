@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34114.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{F0F9CB84-F89C-45F3-AF04-20F798C98598}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\3_Assignment04MetadataWorksheet.xlsx = Documents\3_Assignment04MetadataWorksheet.xlsx
+		Documents\A04_SBlack_Documentation.pdf = Documents\A04_SBlack_Documentation.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reports", "Reports", "{B5568E81-E276-4ADB-B6EA-959AE9471FCA}"
+	ProjectSection(SolutionItems) = preProject
+		Reports\A04_DWEmployeeProjectsETLLogReport_SBlack.rdl = Reports\A04_DWEmployeeProjectsETLLogReport_SBlack.rdl
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{F54AFC0C-9E66-4F26-AA02-5623A3206B04}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\2_Assignment04SourceDatabase.sql = Scripts\2_Assignment04SourceDatabase.sql
+		Scripts\4_Assignment04DWDatabase.sql = Scripts\4_Assignment04DWDatabase.sql
+		Scripts\5_Assignment04ETL_SBlack.sql = Scripts\5_Assignment04ETL_SBlack.sql
+		Scripts\5_Assignment04ETL_YourNameHere.sql = Scripts\5_Assignment04ETL_YourNameHere.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98214316-0B61-4AA9-B9AD-408A001F50CB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+C:\_BISolutions\A05_SBlack\A05_TabularDemo\A05_TabularDemo\bin\Model.asdatabase
+C:\_BISolutions\A05_SBlack\A05_TabularDemo\A05_TabularDemo\bin\Model.deploymenttargets
+C:\_BISolutions\A05_SBlack\A05_TabularDemo\A05_TabularDemo\bin\Model.deploymentoptions
+C:\_BISolutions\A05_SBlack\A05_TabularDemo\A05_TabularDemo\obj\Development\A05_TabularDemo.smproj.CoreCompileInputs.cache
+C:\_BISolutions\A05_SBlack\A05_TabularDemo\A05_TabularDemo\obj\Development\Model.asdatabase
+C:\_BISolutions\A05_SBlack\A05_TabularDemo\A05_TabularDemo\obj\Development\Model.deploymentoptions
+C:\_BISolutions\A05_SBlack\A05_TabularDemo\A05_TabularDemo\obj\Development\Model.deploymenttargets

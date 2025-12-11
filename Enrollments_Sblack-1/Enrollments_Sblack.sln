@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36602.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{D93ED88D-EAA4-4E4C-A0A1-0D74CE6F6F61}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\_BIConceptsPlanningAndImplementation_MetaDataWorksheet(1).xlsx = Documents\_BIConceptsPlanningAndImplementation_MetaDataWorksheet(1).xlsx
+		Documents\_BIConceptsPlanningAndImplementationProject.docx = Documents\_BIConceptsPlanningAndImplementationProject.docx
+		Documents\DWStudentEnrollmentsERD.pdf = Documents\DWStudentEnrollmentsERD.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{0AD518A4-0F14-4795-8477-2B0E0CCEF6E1}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\0-CreateTheStudentEnrollmentsDatabase.sql = Scripts\0-CreateTheStudentEnrollmentsDatabase.sql
+		Scripts\1-CreateTheDWStudentEnrollmentDatabase.sql = Scripts\1-CreateTheDWStudentEnrollmentDatabase.sql
+		Scripts\2-PerformTheETLProcess.sql = Scripts\2-PerformTheETLProcess.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {058B793E-D889-4A1B-BCB6-9C109765BE09}
+	EndGlobalSection
+EndGlobal
